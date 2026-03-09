@@ -19,7 +19,7 @@ export const BentoGrid = ({
     <div
       className={cn(
         // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-4 lg:gap-8 max-w-7xl mx-auto px-4 md:px-8 lg:px-0",
+        "grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4 lg:gap-8 max-w-7xl mx-auto px-4 md:px-8 lg:px-0 mt-10",
         className,
       )}
     >
@@ -63,7 +63,7 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
-    const text = "hsu@jsmastery.pro";
+    const text = "peteremad132oo5@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
   };
