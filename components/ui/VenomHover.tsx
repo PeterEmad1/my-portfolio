@@ -46,7 +46,7 @@ export default function VenomHover() {
       onMouseLeave={() => setHover(false)}
     >
       {/* Face */}
-      <Image src="/face.png" alt="face" fill className="object-cover" />
+      <Image src="/face.jpeg" alt="face" fill className="object-cover" />
 
       {/* Venom */}
       <Image

@@ -19,7 +19,7 @@ export const BentoGrid = ({
     <div
       className={cn(
         // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-        "grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4 lg:gap-8 max-w-7xl mx-auto px-4 md:px-8 lg:px-0 mt-10",
+        "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-4 lg:gap-8 max-w-7xl mx-auto px-4 md:px-8 lg:px-0 mt-10",
         className,
       )}
     >
@@ -53,20 +53,18 @@ export const BentoGridItem = ({
 
   const [copied, setCopied] = useState(false);
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  
 
-  const handleCopy = () => {
-    const text = "peteremad132oo5@gmail.com";
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-  };
+  const handleCopy = async () => {
+  const text = "peteremad132oo5@gmail.com";
+  await navigator.clipboard.writeText(text);
+
+  setCopied(true);
+
+  setTimeout(() => {
+    setCopied(false);
+  }, 2000); // reset after animation
+};
 
   return (
     <div

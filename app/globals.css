@@ -156,3 +156,66 @@
 .clip-full {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
+
+@keyframes first {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(200px,-100px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes second {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-200px,100px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes third {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(100px,200px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes fourth {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-150px,-150px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes fifth {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(200px,150px); }
+  100% { transform: translate(0,0); }
+}
+
+
+.animate-first {
+  animation: first 12s ease-in-out infinite;
+}
+
+.animate-second {
+  animation: second 14s ease-in-out infinite;
+}
+
+.animate-third {
+  animation: third 16s ease-in-out infinite;
+}
+
+.animate-fourth {
+  animation: fourth 18s ease-in-out infinite;
+}
+
+.animate-fifth {
+  animation: fifth 20s ease-in-out infinite;
+}
+
+@import "tailwindcss";
+
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
