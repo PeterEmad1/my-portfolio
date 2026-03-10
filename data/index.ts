@@ -1,3 +1,5 @@
+import { link } from "fs";
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
@@ -72,35 +74,35 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
+    title: " Gaming Clips website",
+    des: "A Clips of my clients favorite games.",
+    img: "/pp1.png",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://github.com/adrianhajdin?tab=repositories",
+    link: "https://peteremad1.github.io/clips-project/",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
+    title: "Movie web application",
+    des: "A Movie web application with a favourite list and a search feature.",
+    img: "/pp2.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/zoom-clone",
+    link: "https://peteremad1.github.io/movie-project/",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
+    title: "flappy bird V2 game",
+    des: "A Flappy bird game shooting game Web Application.",
+    img: "/pp3.png",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/ai_saas_app",
+    link: "https://peteremad1.github.io/Flappy-bird-V-2.7.1-web/",
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
+    title: "Simple Page",
+    des: "A Simple Page Web Application.",
+    img: "/pp4.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "https://github.com/adrianhajdin/iphone",
+    link: "https://peteremad1.github.io/Project-1-code/",
   },
 ];
 
@@ -205,13 +207,17 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/PeterEmad1",
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "/codeforces.svg",
+    link: "https://codeforces.com/profile/_peter_salakan",
+    invert: true,
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/peter-emad-7375582b7/",
   },
 ];

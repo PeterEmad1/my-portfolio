@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Peter's Portfolio",
   description: "Modern & Minimalist JS Mastery Portfolio",
+  icons: {
+    icon: "/peter-griffin.svg",
+  },
 };
 
 export default function RootLayout({
