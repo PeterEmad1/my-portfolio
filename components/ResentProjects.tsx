@@ -11,21 +11,21 @@ const RecentProjects = () => {
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
-      
+
       {/* Reduced gap-x for mobile, kept it large for desktop */}
       <div className="flex flex-wrap items-center justify-center p-4 gap-x-12 gap-y-12 mt-10">
         {projects.map((item) => (
           <div
             key={item.id}
             // FIXED: Responsive heights. Removed h-100/h-164 which causes overflow or huge gaps.
-            className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[90vw]"
+            className="sm:h-164 h-128 lg:min-h-130 flex items-center justify-center sm:w-142.5 w-[90vw]"
           >
             <PinContainer
               title={item.link} // Changed to dynamic link from data
               href={item.link}
             >
               {/* IMAGE CONTAINER: Reduced vh for mobile so text isn't pushed out */}
-              <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+              <div className="relative flex items-center justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                 <div
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
@@ -58,7 +58,7 @@ const RecentProjects = () => {
                   {item.iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      className="border border-white/20 rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
