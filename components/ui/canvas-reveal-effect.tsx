@@ -204,10 +204,12 @@ const ShaderMaterial = ({
   useFrame((state: any) => {
     if (!ref.current || !state?.clock) return;
 
-    const timestamp = state.clock.getElapsedTime();
+    const timestamp = state.clock.elapsedTime;
+
     if (timestamp - lastFrameTime.current < 1 / maxFps) {
       return;
     }
+
     lastFrameTime.current = timestamp;
 
     const material: any = ref.current.material;

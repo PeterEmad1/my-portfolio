@@ -45,7 +45,7 @@ const NAVIGATION_CONFIG = {
       {
         name: "Blog",
         link: "/blog",
-        icon: <IconArticle className="h-5 w-5" />,
+        icon: <IconArticle className="h-5 w-5 text-purple-500" />,
       },
 
       {

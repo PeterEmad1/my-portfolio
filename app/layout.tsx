@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://peteremad.vercel.app"),
   title: "Peter Emad | Portfolio",
-  description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
+  description:
+    "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
 
   icons: {
     icon: "/peter-griffin.svg",
@@ -24,7 +25,8 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Peter Emad | Portfolio",
-    description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
+    description:
+      "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
     url: "https://peteremad.vercel.app",
     siteName: "Peter Emad Portfolio",
     images: [
@@ -41,7 +43,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Peter Emad | Portfolio",
-    description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
+    description:
+      "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
     images: ["/preview.png"],
   },
 };
