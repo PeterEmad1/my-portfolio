@@ -14,10 +14,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Peter's Portfolio",
-  description: "Modern & Minimalist JS Mastery Portfolio",
+  title: "Peter Emad | Portfolio",
+  description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
+
   icons: {
     icon: "/peter-griffin.svg",
+  },
+
+  openGraph: {
+    title: "Peter Emad | Portfolio",
+    description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
+    url: "https://peteremad.vercel.app",
+    siteName: "Peter Emad Portfolio",
+    images: [
+      {
+        url: "/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Peter Emad Portfolio",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Peter Emad | Portfolio",
+    description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
+    images: ["/preview.png"],
   },
 };
 
