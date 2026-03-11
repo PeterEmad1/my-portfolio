@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://peteremad.vercel.app"),
   title: "Peter Emad | Portfolio",
   description: "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
 

@@ -46,13 +46,21 @@ export default function VenomHover() {
       onMouseLeave={() => setHover(false)}
     >
       {/* Face */}
-      <Image src="/face.jpeg" alt="face" fill className="object-cover" />
+      <Image
+        src="/face.jpeg"
+        alt="profile"
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-cover"
+      />
 
       {/* Venom */}
       <Image
         src="/venom.jpg"
         alt="venom"
         fill
+        sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover"
         style={{
           maskImage: `radial-gradient(circle ${radius}px at ${pos.x}px ${pos.y}px, black 50%, transparent 100%)`,
