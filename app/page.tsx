@@ -10,6 +10,7 @@ import Hero from "@/components/Hero";
 import ResentProjects from "@/components/ResentProjects";
 import ScrollText from "@/components/ScrollText";
 import SideVelocityText from "@/components/SideVelocityText";
+import SnowfallEffect from "@/components/SnowfallEffect";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { navItems } from "@/data";
 
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <main className="relative bg-black-100 flex-center flex-col max-w-screen overflow-x-clip">
       <FloatingNav navItems={navItems} />
+      <SnowfallEffect />
       <SideVelocityText />
       <Hero />
       <GithubGraph />

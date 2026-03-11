@@ -24,14 +24,10 @@ export default function GithubGraph() {
             - 'no-scrollbar' hides the bar.
             - 'mask-fade-edges' (from your CSS) makes the edges look smooth.
         */}
-        <div className="relative w-full overflow-hidden mask-fade-edges">
-          <div className="w-full overflow-x-auto pb-8 pt-4 no-scrollbar scroll-smooth">
-            {/* THE SCROLL LOGIC
-                - 'inline-flex' + 'px-10' guarantees the left/right space is always there.
-                - 'justify-start md:justify-center' fixes the mobile "stuck" scroll bug.
-            */}
+        <div className="relative w-full overflow-x-auto mask-fade-edges">
+          <div className="w-full pb-8 pt-4 no-scrollbar scroll-smooth">
             <div className="inline-flex min-w-full justify-start md:justify-center px-10">
-              <div className="p-6 border border-border rounded-3xl backdrop-blur-sm">
+              <div className="p-6 border border-border rounded-3xl backdrop-blur-sm min-w-180">
                 <GitHubCalendar
                   username="PeterEmad1"
                   blockSize={12}

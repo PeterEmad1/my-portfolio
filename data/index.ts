@@ -108,34 +108,39 @@ export const projects = [
 
 export const testimonials = [
   {
+    index: 1,
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Peter developed my gaming clips website and exceeded my expectations. He was professional, creative, and delivered a smooth, well-designed platform. I would definitely recommend him for web development projects.",
+    name: "Bakr",
+    title: "Client",
   },
   {
+    index: 2,
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Peter developed my gaming clips website and exceeded my expectations. He was professional, creative, and delivered a smooth, well-designed platform. I would definitely recommend him for web development projects.",
+    name: "Bakr",
+    title: "Client",
   },
   {
+    index: 3,
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Peter developed my gaming clips website and exceeded my expectations. He was professional, creative, and delivered a smooth, well-designed platform. I would definitely recommend him for web development projects.",
+    name: "Bakr",
+    title: "Client",
   },
   {
+    index: 4,
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Peter developed my gaming clips website and exceeded my expectations. He was professional, creative, and delivered a smooth, well-designed platform. I would definitely recommend him for web development projects.",
+    name: "Bakr",
+    title: "Client",
   },
   {
+    index: 5,
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Peter developed my gaming clips website and exceeded my expectations. He was professional, creative, and delivered a smooth, well-designed platform. I would definitely recommend him for web development projects.",
+    name: "Bakr",
+    title: "Client",
   },
 ];
 

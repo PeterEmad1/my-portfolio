@@ -6,7 +6,7 @@ import { MagicButton } from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 const Hero = () => {
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-start">
+    <div className="relative min-h-[50vh] md:min-h-[70vh] w-full flex flex-col items-center justify-start">
       {/* spotlight effects */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <Spotlight
@@ -33,7 +33,7 @@ const Hero = () => {
       {/* hero content */}
       <div className="z-20 flex flex-col items-center text-center mt-10 max-w-[89vw] md:max-w-2xl lg:max-w-[60vw]">
         <h2 className="uppercase tracking-widest text-xs text-blue-100 max-w-80">
-          Dynamic Web Magic With Next.js
+          Welcome to my portfolio
         </h2>
 
         <TextGenerateEffect
@@ -48,9 +48,9 @@ const Hero = () => {
           </span>
         </p>
 
-        <a href="#about">
+        <a href="/peter-emad-cv.pdf" download>
           <MagicButton
-            title="Show my work"
+            title="Download CV"
             icon={<FaLocationArrow />}
             position="right"
           />
