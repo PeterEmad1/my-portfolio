@@ -11,28 +11,28 @@ export default function SideVelocityText() {
       {/* DESKTOP SIDE TEXT */}
       <div className="hidden lg:block">
         {/* LEFT */}
-        <div className="fixed left-0 top-0 h-screen w-24 flex items-center justify-center overflow-hidden pointer-events-none z-10">
+        <div className="fixed left-0 top-0 h-screen w-20 flex items-center justify-center overflow-hidden pointer-events-none z-10 ml-25 bg-[#0f172a] font-bold">
           <ScrollVelocityContainer className="-rotate-90 w-[200vh]">
-            <ScrollVelocityRow baseVelocity={5}>
-              <span className="mx-16 text-3xl font-semibold tracking-[0.4em] text-purple-400/80">
-                .OPEN TO WORK.
+            <ScrollVelocityRow baseVelocity={-8}>
+              <span className="mx-5 text-3xl font-semibold tracking-[0.4em] text-purple-400/80 ">
+                • OPEN TO WORK • 
               </span>
-              <span className="mx-16 text-3xl font-semibold tracking-[0.4em] text-white/70">
-                .OPEN TO WORK.
+              <span className="mx-5 text-3xl font-semibold tracking-[0.4em] text-white/70">
+                • OPEN TO WORK •
               </span>
             </ScrollVelocityRow>
           </ScrollVelocityContainer>
         </div>
 
         {/* RIGHT */}
-        <div className="fixed right-0 top-0 h-screen w-24 flex items-center justify-center overflow-hidden pointer-events-none z-10">
+        <div className="fixed right-0 top-0 h-screen w-20 flex items-center justify-center overflow-hidden pointer-events-none z-10 mr-25 bg-[#0f172a] ">
           <ScrollVelocityContainer className="rotate-90 w-[200vh]">
-            <ScrollVelocityRow baseVelocity={-5}>
-              <span className="mx-16 text-3xl font-semibold tracking-[0.4em] text-white/70">
-                .OPEN TO WORK.
+            <ScrollVelocityRow baseVelocity={-8}>
+              <span className="mx-5 text-3xl font-semibold tracking-[0.4em] text-white/70">
+                • OPEN TO WORK •
               </span>
-              <span className="mx-16 text-3xl font-semibold tracking-[0.4em] text-purple-400/80">
-                .OPEN TO WORK.
+              <span className="mx-5 text-3xl font-semibold tracking-[0.4em] text-purple-400/80">
+                • OPEN TO WORK •
               </span>
             </ScrollVelocityRow>
           </ScrollVelocityContainer>
@@ -44,10 +44,10 @@ export default function SideVelocityText() {
         <ScrollVelocityContainer>
           <ScrollVelocityRow baseVelocity={5}>
             <span className="mx-10 text-2xl font-semibold tracking-[0.3em] text-purple-400/80">
-              .OPEN TO WORK.
+              •OPEN TO WORK•
             </span>
             <span className="mx-10 text-2xl font-semibold tracking-[0.3em] text-white/70">
-              .OPEN TO WORK.
+              •OPEN TO WORK•
             </span>
           </ScrollVelocityRow>
         </ScrollVelocityContainer>
