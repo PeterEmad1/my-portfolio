@@ -1,0 +1,19 @@
+pre {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-rehype-pretty-code-fragment] {
+  background: #0f172a;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  font-size: 14px;
+}

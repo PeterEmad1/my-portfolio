@@ -1,0 +1,249 @@
+---
+title: Build a Hand Gesture Controller with OpenCV, MediaPipe and Arduino
+publishedAt: 2026-03-12
+summary: Control LEDs using hand gestures with Python, OpenCV, MediaPipe and Arduino.
+readTime: "6 min"
+category: "AI"
+---
+
+# Build a Hand Gesture Controller with OpenCV and MediaPipe
+
+Computer vision allows machines to understand and interact with the visual world. In this project, I built a **hand gesture controller** that detects finger positions using a webcam and uses them to control **LEDs connected to an Arduino board**.
+
+Using **OpenCV**, **MediaPipe**, and **cvzone**, the system detects hand landmarks in real time and maps the number of raised fingers to LED states.
+
+Each finger corresponds to an LED connected to Arduino. This creates a gesture-controlled hardware interface where your hand controls real electronics.
+
+---
+
+## Project Overview
+
+The system works in three main steps:
+
+1. Capture video from the webcam
+2. Detect and track hand landmarks using MediaPipe
+3. Convert finger states into LED signals sent to Arduino
+
+The result is a **touchless LED controller powered by computer vision**.
+
+---
+
+## Technologies Used
+
+- Python
+- OpenCV
+- MediaPipe
+- cvzone
+- Arduino
+- PyFirmata
+
+---
+
+## Installing Dependencies
+
+Install the required Python libraries:
+
+```bash
+pip install opencv-python mediapipe cvzone pyfirmata numpy
+```
+
+---
+
+## Hardware Setup
+
+The Arduino board is connected to five LEDs, each representing a finger.
+
+| Finger | Arduino Pin | LED Color |
+| ------ | ----------- | --------- |
+| Thumb  | 8           | Red       |
+| Index  | 9           | Green     |
+| Middle | 10          | Blue      |
+| Ring   | 11          | Yellow    |
+| Pinky  | 12          | White     |
+
+### Circuit Rules
+
+- When a finger is raised, its LED turns **ON**
+- When a finger is lowered, its LED turns **OFF**
+- Always use **220–330 ohm resistors** with LEDs
+
+---
+
+## Hand Gesture Detection Code
+
+Create a file called **main.py**.
+
+```python
+import cv2
+import controller as cnt
+from cvzone.HandTrackingModule import HandDetector
+
+# Initialize hand detector
+detector = HandDetector(detectionCon=0.8, maxHands=1)
+
+video = cv2.VideoCapture(0)
+
+while True:
+    ret, frame = video.read()
+    frame = cv2.flip(frame, 1)
+
+    hands, img = detector.findHands(frame)
+
+    if hands:
+        lmList = hands[0]
+        fingerUp = detector.fingersUp(lmList)
+
+        # Reverse order for correct mapping
+        fingerUp_corrected = fingerUp[::-1]
+
+        # Send finger states to Arduino
+        cnt.led(fingerUp_corrected)
+
+        print("Finger states (thumb to pinky):", fingerUp_corrected)
+        print("Number of fingers up:", sum(fingerUp_corrected))
+
+        count = sum(fingerUp_corrected)
+
+        cv2.putText(
+            frame,
+            f'Finger count: {count}',
+            (50, 460),
+            cv2.FONT_HERSHEY_COMPLEX,
+            1,
+            (255, 0, 0),
+            2,
+            cv2.LINE_AA
+        )
+
+    cv2.imshow("Hand Gesture Controller", frame)
+
+    if cv2.waitKey(1) == ord("k"):
+        break
+
+video.release()
+cv2.destroyAllWindows()
+```
+
+---
+
+## Arduino LED Controller Code
+
+Create a file named **controller.py**.
+
+```python
+import pyfirmata
+
+# Set Arduino port
+comport = 'COM3'
+
+board = pyfirmata.Arduino(comport)
+
+# Map LEDs to pins
+led_pins = [8, 9, 10, 11, 12]
+leds = [board.get_pin(f'd:{pin}:o') for pin in led_pins]
+
+def led(fingerUp):
+    """
+    Controls LEDs based on finger states.
+    fingerUp format: [thumb, index, middle, ring, pinky]
+    """
+
+    for led_pin, state in zip(leds, fingerUp):
+        led_pin.write(state)
+```
+
+---
+
+## How the System Works
+
+MediaPipe detects **21 hand landmarks**. From these landmarks, the program determines whether each finger is raised.
+
+Example finger state:
+
+```
+[1, 0, 1, 0, 1]
+```
+
+| Finger | State | LED |
+| ------ | ----- | --- |
+| Thumb  | 1     | ON  |
+| Index  | 0     | OFF |
+| Middle | 1     | ON  |
+| Ring   | 0     | OFF |
+| Pinky  | 1     | ON  |
+
+These values are sent to the Arduino, which switches LEDs accordingly.
+
+---
+
+## Real-Time Feedback
+
+The program provides multiple feedback methods:
+
+- Terminal output displaying finger states
+- Visual overlay showing finger count on the video feed
+- Hardware feedback through LED activation
+
+Example console output:
+
+```
+Finger states (thumb to pinky): [1, 0, 1, 0, 1]
+Number of fingers up: 3
+```
+
+---
+
+## Result
+
+The final system allows you to:
+
+- Control LEDs with hand gestures
+- Track fingers in real time
+- Interact with hardware using computer vision
+- Operate the system without physical contact
+
+All powered by a simple webcam and Python.
+
+---
+
+## Future Improvements
+
+| Improvement               | Description                           |
+| ------------------------- | ------------------------------------- |
+| Media Control             | Control music playback using gestures |
+| Volume Control            | Adjust volume using finger distance   |
+| Machine Learning Gestures | Train custom gestures                 |
+| Home Automation           | Control lights and appliances         |
+| Servo Motors              | Move motors with hand position        |
+
+---
+
+## Troubleshooting
+
+### Arduino Connection Issues
+
+- Verify the correct COM port
+- Ensure the Arduino is connected
+- Close the Arduino IDE if it is using the same port
+
+### Camera Issues
+
+- Ensure the webcam is connected
+- Try changing the camera index in `cv2.VideoCapture(0)`
+- Check if another application is using the camera
+
+### LED Not Responding
+
+- Verify wiring connections
+- Check LED polarity
+- Ensure resistors are installed
+
+---
+
+## Conclusion
+
+This project demonstrates how computer vision can interact with physical hardware.
+
+Using **OpenCV**, **MediaPipe**, and **Arduino**, developers can build intuitive gesture-based systems that bridge the gap between software and the physical world.
+
+Gesture interfaces are increasingly important in areas such as **computer vision**, **embedded systems**, and **human–computer interaction**. Projects like this provide a foundation for exploring more advanced applications such as robotics, smart home systems, and IoT devices.

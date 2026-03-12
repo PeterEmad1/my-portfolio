@@ -34,7 +34,7 @@ const Experience = () => {
                 <h1 className="text-xl md:text-2xl font-bold">
                   {card.title}
                 </h1>
-                <p className="text-white-100 mt-3 font-semibold text-sm md:text-base leading-relaxed">
+                <p className="text-white-100 mt-3 font-bold text-sm md:text-base leading-relaxed">
                   {card.desc}
                 </p>
               </div>

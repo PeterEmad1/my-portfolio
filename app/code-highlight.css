@@ -1,0 +1,43 @@
+pre {
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 14px;
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* rehype-pretty-code container */
+
+[data-rehype-pretty-code-fragment] {
+  margin: 1.5rem 0;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* line styling */
+
+[data-line] {
+  padding: 0 12px;
+}
+
+/* highlighted line */
+
+[data-highlighted-line] {
+  background: rgba(255,255,255,0.08);
+}
+
+/* highlighted word */
+
+[data-highlighted-chars] {
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+}

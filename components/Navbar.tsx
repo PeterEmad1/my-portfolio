@@ -165,10 +165,25 @@ const MobileNav = ({ navItems }: { navItems: any[] }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = (navItem: any, e: React.MouseEvent) => {
-    if (navItem.link.startsWith("http")) {
+    if (navItem.link === "#") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (navItem.link.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(navItem.link) as HTMLElement;
+
+      if (element) {
+        const offset = element.offsetTop - 80;
+        window.scrollTo({
+          top: offset,
+          behavior: "smooth",
+        });
+      }
+    } else if (navItem.link.startsWith("http")) {
       e.preventDefault();
       window.open(navItem.link, "_blank");
     }
+
     setOpen(false);
   };
 
