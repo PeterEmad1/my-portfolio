@@ -47,7 +47,7 @@ export default function VenomHover() {
       className="
         relative
         w-28 sm:w-36 md:w-48 lg:w-64 xl:w-80
-        aspect-[108/154.5]
+        aspect-108/154.5
         overflow-hidden
         rounded-xl
         touch-none
