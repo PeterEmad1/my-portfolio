@@ -6,7 +6,7 @@ import { MagicButton } from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 const Hero = () => {
   return (
-    <div className="relative min-h-[50vh] md:min-h-[70vh] w-full flex flex-col items-center justify-start">
+    <div className="relative min-h-[50vh] md:min-h-[70vh] w-full flex flex-col items-center justify-start overflow-x-hidden">
       {/* spotlight effects */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <Spotlight
@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
 
       {/* grid background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <GridBackgroundDemo />
       </div>
 

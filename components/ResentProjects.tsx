@@ -1,64 +1,70 @@
 "use client";
 
+import React from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
 
+// ⭐ CHANGE THIS TO RESIZE CARDS
+const CARD_SIZE = 582;
+
 const RecentProjects = () => {
   return (
     <div className="py-20" id="projects">
+      {" "}
       <h1 className="font-bold text-4xl md:text-5xl text-center px-4">
         A small selection of{" "}
-        <span className="text-purple">recent projects</span>
+        <span className="text-purple">recent projects</span>{" "}
       </h1>
-
-      {/* Reduced gap-x for mobile, kept it large for desktop */}
-      <div className="flex flex-wrap items-center justify-center p-4 gap-x-12 gap-y-12 mt-10">
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16 mt-12 max-w-400 mx-auto justify-items-center px-6">
         {projects.map((item) => (
           <div
             key={item.id}
-            // FIXED: Responsive heights. Removed h-100/h-164 which causes overflow or huge gaps.
-            className="sm:h-164 h-128 lg:min-h-130 flex items-center justify-center sm:w-142.5 w-[90vw]"
+            style={{ width: `${CARD_SIZE}px` }}
+            className="flex items-center justify-center perspective-distant"
           >
-            <PinContainer
-              title={item.link} // Changed to dynamic link from data
-              href={item.link}
-            >
-              {/* IMAGE CONTAINER: Reduced vh for mobile so text isn't pushed out */}
-              <div className="relative flex items-center justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+            <PinContainer title={item.link} href={item.link}>
+              {/* Image */}
+              <div className="relative flex items-center justify-center w-full aspect-16/10 overflow-hidden mb-8">
                 <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
+                  className="relative w-full h-full overflow-hidden rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <img
+                    src="/bg.png"
+                    alt="bgimg"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+
                 <img
                   src={item.img}
                   alt="cover"
-                  className="z-10 absolute bottom-0 rotate-2 rounded-t-lg shadow-2xl"
+                  className="z-10 absolute bottom-0 rotate-2 rounded-t-xl shadow-2xl w-[90%] h-full object-cover"
                 />
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              {/* Title */}
+              <h1 className="font-bold text-xl md:text-2xl line-clamp-1">
                 {item.title}
               </h1>
 
+              {/* Description */}
               <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                style={{
-                  color: "#BEC1DD",
-                  margin: "1.5vh 0",
-                }}
+                className="text-sm md:text-lg font-light line-clamp-2 mt-3"
+                style={{ color: "#BEC1DD" }}
               >
                 {item.des}
               </p>
 
-              <div className="flex items-center justify-between mt-7 mb-3">
+              {/* Footer */}
+              <div className="flex items-center justify-between mt-6">
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/20 rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      className="border border-white/20 rounded-full bg-black w-8 h-8 md:w-10 md:h-10 flex justify-center items-center"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
@@ -68,11 +74,11 @@ const RecentProjects = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                <div className="flex items-center">
+                  <p className="text-purple text-sm md:text-base">
                     Check Live Site
                   </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  <FaLocationArrow className="ms-2" color="#CBACF9" />
                 </div>
               </div>
             </PinContainer>
