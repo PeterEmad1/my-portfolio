@@ -5,14 +5,10 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import BlurFade from "@/components/blur-fade";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { mdxComponents } from "@/mdx-components";
 import { getBlogPosts, getPost } from "@/components/data/blog";
 import { DATA } from "@/data/resume";
-import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
 import { Navigation } from "@/components/Navbar";
 import { Spotlight } from "@/components/ui/spotlight";
-import rehypePrettyCode from "rehype-pretty-code";
 import MDX from "@/components/mdx/MDX";
 
 export async function generateStaticParams() {
@@ -167,7 +163,7 @@ export default async function Blog({
       </div>
 
       {/* Syntax Highlighter */}
-      <SyntaxHighlighter />
+      {/* <SyntaxHighlighter /> */}
 
       {/* Blog Responsive Navigation */}
       <Navigation variant="blog" />
