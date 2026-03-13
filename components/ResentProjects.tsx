@@ -7,16 +7,16 @@ import { PinContainer } from "./ui/3d-pin";
 
 // ⭐ CHANGE THIS TO RESIZE CARDS
 const CARD_SIZE = 582;
+// const CARD_SIZE = 500;
 
 const RecentProjects = () => {
   return (
-    <div className="py-20" id="projects">
-      {" "}
+    <div className="py-20 z-20" id="projects">
       <h1 className="font-bold text-4xl md:text-5xl text-center px-4">
         A small selection of{" "}
-        <span className="text-purple">recent projects</span>{" "}
+        <span className="text-purple">recent projects</span>
       </h1>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16 mt-12 max-w-400 mx-auto justify-items-center px-6">
         {projects.map((item) => (
           <div

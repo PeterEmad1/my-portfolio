@@ -3,8 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./highlight.css";
 import "./code-highlight.css";
+
 import { ThemeProvider } from "next-themes";
 import Loader from "@/components/Loader";
+
+import { MDXProvider } from "@mdx-js/react";
+// import { mdxComponents } from "@/mdx-components";
+import MDXWrapper from "@/components/MDXWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,11 +26,9 @@ export const metadata: Metadata = {
   title: "Peter Emad | Portfolio",
   description:
     "Explore Peter Emad's portfolio featuring modern web applications, AI projects, and creative software solutions.",
-
   icons: {
     icon: "/peter-griffin.svg",
   },
-
   openGraph: {
     title: "Peter Emad | Portfolio",
     description:
@@ -42,7 +45,6 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Peter Emad | Portfolio",
@@ -68,9 +70,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Loader>
-            {children}
-          </Loader>
+          <MDXWrapper>
+            <Loader>{children}</Loader>
+          </MDXWrapper>
         </ThemeProvider>
       </body>
     </html>
