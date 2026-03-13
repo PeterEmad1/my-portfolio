@@ -9,7 +9,7 @@ import Loader from "@/components/Loader";
 
 import { MDXProvider } from "@mdx-js/react";
 // import { mdxComponents } from "@/mdx-components";
-import MDXWrapper from "@/components/MDXWrapper";
+// import MDXWrapper from "@/components/MDXWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,9 +70,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MDXWrapper>
+          {/* <MDXWrapper> */}
             <Loader>{children}</Loader>
-          </MDXWrapper>
+          {/* </MDXWrapper> */}
         </ThemeProvider>
       </body>
     </html>

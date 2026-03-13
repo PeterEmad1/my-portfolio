@@ -1,61 +1,42 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeStringify from "rehype-stringify";
-import remarkGfm from "remark-gfm";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import { unified } from "unified";
+
+const postsDirectory = path.join(process.cwd(), "content");
 
 function getMDXFiles(dir: string) {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
-export async function markdownToHTML(markdown: string) {
-  const p = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypePrettyCode, {
-      theme: {
-        dark: "one-dark-pro",
-        light: "github-light",
-      },
-    })
-    .use(rehypeStringify)
-    .process(markdown);
-
-  return p.toString();
-}
-
 export async function getPost(slug: string) {
-  const filePath = path.join("content", `${slug}.mdx`);
-  let source = fs.readFileSync(filePath, "utf-8");
-  const { content: rawContent, data: metadata } = matter(source);
-  const content = await markdownToHTML(rawContent);
+  const filePath = path.join(postsDirectory, `${slug}.mdx`);
+  const source = fs.readFileSync(filePath, "utf8");
+
+  const { content, data } = matter(source);
+
   return {
-    source: content,
-    metadata,
     slug,
+    metadata: data,
+    content,
   };
 }
 
 async function getAllPosts(dir: string) {
-  let mdxFiles = getMDXFiles(dir);
+  const mdxFiles = getMDXFiles(dir);
+
   return Promise.all(
     mdxFiles.map(async (file) => {
-      let slug = path.basename(file, path.extname(file));
-      let { metadata, source } = await getPost(slug);
+      const slug = path.basename(file, ".mdx");
+      const { metadata } = await getPost(slug);
+
       return {
-        metadata,
         slug,
-        source,
+        metadata,
       };
-    }),
+    })
   );
 }
 
 export async function getBlogPosts() {
-  return getAllPosts(path.join(process.cwd(), "content"));
+  return getAllPosts(postsDirectory);
 }

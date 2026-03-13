@@ -121,14 +121,16 @@ export default function Page() {
           align-items: center;
           gap: 16px;
           padding: 16px;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+          font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono",
+            monospace;
         }
 
         h1 {
           padding: 0px 4px;
           border-radius: 4px;
           background-color: rgba(24, 20, 35, 0.03);
-          font-family: monospace;
+          font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono",
+            monospace;
           font-size: 20px;
           line-height: 1.2;
         }

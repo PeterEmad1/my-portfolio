@@ -9,7 +9,7 @@ pre {
 }
 
 code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono",
 }
 
 /* rehype-pretty-code container */

@@ -1,13 +1,10 @@
 ---
-
 title: "Build a Hand Gesture Controller with OpenCV, MediaPipe and Arduino"
 publishedAt: "2026-03-12"
 summary: "Control LEDs using hand gestures with Python, OpenCV, MediaPipe, and Arduino."
 readTime: "6 min"
 category: "AI"
---------------
-
-import Callout from "@/components/mdx/Callout"
+---
 
 # Build a Hand Gesture Controller with OpenCV and MediaPipe
 
@@ -18,7 +15,8 @@ Using **OpenCV**, **MediaPipe**, and **cvzone**, the system detects hand landmar
 Each finger corresponds to an LED connected to Arduino, creating a gesture-controlled hardware interface where your hand controls real electronics.
 
 <Callout type="info">
-This project combines **computer vision + hardware control**, allowing you to control physical electronics using only hand gestures.
+  This project combines **computer vision + hardware control**, allowing you to
+  control physical electronics using only hand gestures.
 </Callout>
 
 ---
@@ -37,12 +35,12 @@ The result is a **touchless LED controller powered by computer vision**.
 
 ## Technologies Used
 
-* Python
-* OpenCV
-* MediaPipe
-* cvzone
-* Arduino
-* PyFirmata
+- Python
+- OpenCV
+- MediaPipe
+- cvzone
+- Arduino
+- PyFirmata
 
 ---
 
@@ -69,7 +67,8 @@ The Arduino board is connected to five LEDs, each representing a finger.
 | Pinky  | 12          | White     |
 
 <Callout type="warning">
-Always use **220–330Ω resistors** when connecting LEDs to Arduino to prevent damage.
+  Always use **220–330Ω resistors** when connecting LEDs to Arduino to prevent
+  damage.
 </Callout>
 
 ---
@@ -185,9 +184,9 @@ These values are sent to the Arduino, which switches LEDs accordingly.
 
 The program provides multiple feedback methods:
 
-* Terminal output displaying finger states
-* Visual overlay showing finger count on the video feed
-* Hardware feedback through LED activation
+- Terminal output displaying finger states
+- Visual overlay showing finger count on the video feed
+- Hardware feedback through LED activation
 
 Example console output:
 
@@ -202,10 +201,10 @@ Number of fingers up: 3
 
 The final system allows you to:
 
-* Control LEDs with hand gestures
-* Track fingers in real time
-* Interact with hardware using computer vision
-* Operate the system without physical contact
+- Control LEDs with hand gestures
+- Track fingers in real time
+- Interact with hardware using computer vision
+- Operate the system without physical contact
 
 All powered by a simple webcam and Python.
 
@@ -227,21 +226,21 @@ All powered by a simple webcam and Python.
 
 ### Arduino Connection Issues
 
-* Verify the correct COM port
-* Ensure the Arduino is connected
-* Close the Arduino IDE if it is using the same port
+- Verify the correct COM port
+- Ensure the Arduino is connected
+- Close the Arduino IDE if it is using the same port
 
 ### Camera Issues
 
-* Ensure the webcam is connected
-* Try changing the camera index in `cv2.VideoCapture(0)`
-* Check if another application is using the camera
+- Ensure the webcam is connected
+- Try changing the camera index in `cv2.VideoCapture(0)`
+- Check if another application is using the camera
 
 ### LED Not Responding
 
-* Verify wiring connections
-* Check LED polarity
-* Ensure resistors are installed
+- Verify wiring connections
+- Check LED polarity
+- Ensure resistors are installed
 
 ---
 
