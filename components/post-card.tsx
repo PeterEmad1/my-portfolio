@@ -82,7 +82,7 @@ export const PostCard = ({
                 </div>
               </div>
 
-              <h1 className="text-2xl font-semibold">{title}</h1>
+              <h2 className="text-2xl font-semibold">{title}</h2>
 
               <motion.div
                 initial={{ opacity: 0, height: 0 }}

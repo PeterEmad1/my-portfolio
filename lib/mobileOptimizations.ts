@@ -1,6 +1,6 @@
 // Mobile-specific performance optimizations
 
-import { debounce, throttle } from "./preformace";
+import { debounce, throttle } from "./performance";
 
 // import { debounce, throttle } from './performance';
 

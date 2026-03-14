@@ -1,15 +1,15 @@
 import { formatDate } from "@/lib/utils";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import BlurFade from "@/components/blur-fade";
-import { getBlogPosts, getPost } from "@/components/data/blog";
+import { getBlogPosts, getPost } from "@/lib/blog";
 import { DATA } from "@/data/resume";
 import { Navigation } from "@/components/Navbar";
 import { Spotlight } from "@/components/ui/spotlight";
 import MDX from "@/components/mdx/MDX";
+import { GridBackgroundDemo } from "@/components/ui/grid-background";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -19,21 +19,23 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>; // 1. Change type to Promise
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
-  const { slug } = await params; // 2. Await the params
+  const { slug } = await params;
+  const post = await getPost(slug);
 
-  let post = await getPost(slug);
+  if (!post) return;
 
-  if (!post) return; // Add a safety check
-
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
     image,
   } = post.metadata;
-  let ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
+
+  const ogImage = image
+    ? `${DATA.url}${image}`
+    : `${DATA.url}/og?title=${title}`;
 
   return {
     title,
@@ -44,11 +46,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime,
       url: `${DATA.url}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
@@ -65,17 +63,16 @@ export default async function Blog({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  let post = await getPost(slug);
+  const post = await getPost(slug);
 
   if (!post) {
     notFound();
   }
 
   return (
-    <main className="relative bg-black-100 flex  items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 min-h-screen">
+    <main className="relative bg-black-100 flex items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 min-h-screen">
       <div className="max-w-7xl w-full">
-        {/* spotlight effects */}
+        {/* Spotlight effects */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <Spotlight
             className="-top-40 -left-10 md:-left-32 md:top-20 h-screen"
@@ -88,9 +85,9 @@ export default async function Blog({
           <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
         </div>
 
-        {/* grid background */}
+        {/* Grid background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {/* <GridBackgroundDemo /> */}
+          <GridBackgroundDemo />
         </div>
 
         {/* Radial gradient overlay */}
@@ -134,22 +131,12 @@ export default async function Blog({
           {/* Article header */}
           <BlurFade delay={0.08}>
             <div className="max-w-4xl mx-auto border-b border-gray-700 mb-4">
-              <h1 className="font-medium text-3xl md:text-4xl lg:text-4xl tracking-tighter text-white mb-2">
+              <h1 className="font-medium text-3xl md:text-4xl tracking-tighter text-white mb-2">
                 {post.metadata.title}
               </h1>
-
-              <div className=" flex-col gap-2! md:flex-row justify-between items-center mb-5">
-                <Suspense fallback={<p className="h-5 " />}>
-                  <p className="text-sm  text-gray-300 mb-6 font-mono">
-                    {formatDate(post.metadata.publishedAt)}
-                  </p>
-                </Suspense>
-                {/* {post.metadata.summary && (
-                  <p className="text-gray-300 text-sm max-w-md text-left">
-                    {post.metadata.summary}
-                  </p>
-                )} */}
-              </div>
+              <p className="text-sm text-gray-300 mb-6 font-mono">
+                {formatDate(post.metadata.publishedAt)}
+              </p>
             </div>
           </BlurFade>
 
@@ -161,9 +148,6 @@ export default async function Blog({
           </BlurFade>
         </section>
       </div>
-
-      {/* Syntax Highlighter */}
-      {/* <SyntaxHighlighter /> */}
 
       {/* Blog Responsive Navigation */}
       <Navigation variant="blog" />

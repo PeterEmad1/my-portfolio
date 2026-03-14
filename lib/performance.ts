@@ -13,7 +13,7 @@ export const measurePerformance = (name: string, fn: () => void) => {
 
 export const debounce = <T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): ((...args: Parameters<T>) => void) => {
   let timeout: NodeJS.Timeout;
   return (...args: Parameters<T>) => {
@@ -24,7 +24,7 @@ export const debounce = <T extends (...args: any[]) => any>(
 
 export const throttle = <T extends (...args: any[]) => any>(
   func: T,
-  limit: number
+  limit: number,
 ): ((...args: Parameters<T>) => void) => {
   let inThrottle: boolean;
   return (...args: Parameters<T>) => {
@@ -39,7 +39,7 @@ export const throttle = <T extends (...args: any[]) => any>(
 // Intersection Observer with performance optimization
 export const createIntersectionObserver = (
   callback: IntersectionObserverCallback,
-  options: IntersectionObserverInit = {}
+  options: IntersectionObserverInit = {},
 ) => {
   if (typeof window === "undefined") return null;
 
@@ -48,20 +48,6 @@ export const createIntersectionObserver = (
     rootMargin: "50px",
     ...options,
   });
-};
-
-// Memory management
-export const cleanupResources = () => {
-  if (typeof window !== "undefined") {
-    // Clear any cached data
-    if ("caches" in window) {
-      caches.keys().then((names) => {
-        names?.forEach((name) => {
-          caches.delete(name);
-        });
-      });
-    }
-  }
 };
 
 // Bundle size monitoring

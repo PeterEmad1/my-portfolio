@@ -1,6 +1,6 @@
 import BlogListWithFilter from "@/components/BlogListWithFilter";
 import BlurFade from "@/components/blur-fade";
-import { getBlogPosts } from "@/components/data/blog";
+import { getBlogPosts } from "@/lib/blog";
 import { Navigation } from "@/components/Navbar";
 import { BlogPostSkeleton } from "@/components/post-card";
 import { GridBackgroundDemo } from "@/components/ui/grid-background";
@@ -20,7 +20,6 @@ export default async function BlogPage() {
   return (
     <main className="relative bg-black-100 flex items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 min-h-screen">
       <div className="max-w-7xl w-full">
-        {/* spotlight effects */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <Spotlight
             className="-top-40 -left-10 md:-left-32 md:top-20 h-screen"
@@ -33,12 +32,10 @@ export default async function BlogPage() {
           <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
         </div>
 
-        {/* grid background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <GridBackgroundDemo />
         </div>
 
-        {/* Radial gradient overlay */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
 
         <section className="relative z-10 pt-20 pb-20">
@@ -49,9 +46,8 @@ export default async function BlogPage() {
               </h1>
               <p className="text-blue-100 text-sm md:text-lg max-w-2xl mx-auto mb-3">
                 My thoughts on software development, share knowledge and
-                advanced topics. this topics will translated in to videos in
-                youtube an linkedin to people who love videos more like me and i
-                will do my best there.
+                advanced topics. These topics will also be turned into videos on
+                YouTube and LinkedIn for those who prefer video content.
               </p>
             </div>
           </BlurFade>
@@ -66,13 +62,12 @@ export default async function BlogPage() {
                 </div>
               }
             >
-              <BlogListWithFilter posts={posts as any} />
+              <BlogListWithFilter posts={posts} />
             </Suspense>
           </div>
         </section>
       </div>
 
-      {/* Blog Responsive Navigation */}
       <Navigation variant="blog" />
     </main>
   );

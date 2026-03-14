@@ -3,9 +3,11 @@ import { useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { PostCard } from "./post-card";
 import { formatDate } from "@/lib/utils";
+import { PostMetadata } from "@/lib/blog";
 
 const CATEGORY_LABELS: Record<string, string> = {
   all: "All",
+  ai: "AI",
   // fundamentals: "JS Fundamentals",
   // advanced_js: "Advanced JS",
   // advanced_topics: "Advanced Topics",
@@ -13,9 +15,10 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 const CATEGORY_MATCHERS: Record<string, (cat: string) => boolean> = {
   all: () => true,
-  fundamentals: (cat: string) => /fundamentals?/i.test(cat),
-  advanced_js: (cat: string) => /adv(anced)?\s*js/i.test(cat),
-  advanced_topics: (cat: string) => /adv(anced)?\s*topics?/i.test(cat),
+  ai: (cat: string) => /ai/i.test(cat),
+  // fundamentals: (cat: string) => /fundamentals?/i.test(cat),
+  // advanced_js: (cat: string) => /adv(anced)?\s*js/i.test(cat),
+  // advanced_topics: (cat: string) => /adv(anced)?\s*topics?/i.test(cat),
 };
 
 function normalizeCategories(category?: string | string[]) {
@@ -23,7 +26,11 @@ function normalizeCategories(category?: string | string[]) {
   return Array.isArray(category) ? category : [category];
 }
 
-export function BlogListWithFilter({ posts }: any) {
+export function BlogListWithFilter({
+  posts,
+}: {
+  posts: { slug: string; metadata: PostMetadata }[];
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -39,7 +46,7 @@ export function BlogListWithFilter({ posts }: any) {
 
   const filtered = useMemo(() => {
     const matcher = CATEGORY_MATCHERS[selected] || CATEGORY_MATCHERS.all;
-    return posts.filter((p: any) => {
+    return posts.filter((p) => {
       const cats = normalizeCategories(p.metadata.category);
       if (cats.length === 0) return selected === "all";
       return cats.some((c) => matcher(c));
@@ -77,23 +84,17 @@ export function BlogListWithFilter({ posts }: any) {
       </aside>
 
       <div className="space-y-6">
-        {filtered
-          .sort((a: any, b: any) =>
-            new Date(a.metadata.publishedAt) < new Date(b.metadata.publishedAt)
-              ? -1
-              : 1,
-          )
-          .map((post: any, id: any) => (
-            <PostCard
-              key={id}
-              category={post.metadata.category || []}
-              readTime={post.metadata.readTime}
-              title={post.metadata.title}
-              slug={post.slug}
-              description={post.metadata.summary}
-              date={formatDate(post.metadata.publishedAt)}
-            />
-          ))}
+        {filtered.map((post) => (
+          <PostCard
+            key={post.slug}
+            category={post.metadata.category || []}
+            readTime={post.metadata.readTime}
+            title={post.metadata.title}
+            slug={post.slug}
+            description={post.metadata.summary}
+            date={formatDate(post.metadata.publishedAt)}
+          />
+        ))}
         {filtered.length === 0 && (
           <div className="text-blue-100">No posts found for this category.</div>
         )}

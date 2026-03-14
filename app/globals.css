@@ -286,19 +286,3 @@
     @apply font-sans;
   }
 }
-
-/* Code block styles */
-pre {
-  padding: 1.25rem;
-  border-radius: 0.75rem;
-  overflow-x: auto;
-  font-size: 0.9rem;
-
-  code {
-    display: grid;
-  }
-}
-
-code {
-  font-family: "Fira Code", "Monaco", "Cascadia Code", "Roboto Mono",
-}
