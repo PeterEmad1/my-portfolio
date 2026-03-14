@@ -1,18 +1,23 @@
 import { cn } from "@/lib/utils";
 
+// grid-background.tsx
 export function GridBackgroundDemo() {
   return (
-    <div className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden bg-white dark:bg-black-100">
+    <div className="pointer-events-none absolute inset-0 h-full w-full bg-white dark:bg-black-100">
       <div
         className={cn(
-          "absolute inset-0",
-          "bg-size-[60px_60px]",
-          "bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-          "dark:bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+          "absolute inset-0 h-full w-full",
+          // 1. Ensure the grid size is slightly more robust
+          "bg-size-[50px_50px]", 
+          // 2. Use 1.5px or 0.1rem to prevent the lines from rounding down to zero
+          "bg-[linear-gradient(to_right,#e4e4e7_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e4e4e7_1.5px,transparent_1.5px)]",
+          "dark:bg-[linear-gradient(to_right,#262626_1.5px,transparent_1.5px),linear-gradient(to_bottom,#262626_1.5px,transparent_1.5px)]",
         )}
       />
-      {/* Radial gradient for the container to give a faded look */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_60%,black)] dark:bg-black-100"></div>
+      {/* 3. Check the mask property */}
+      <div 
+        className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white dark:bg-black-100 mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" 
+      />
     </div>
   );
 }

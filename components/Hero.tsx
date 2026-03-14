@@ -6,7 +6,7 @@ import { MagicButton } from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 const Hero = () => {
   return (
-    <div className="relative min-h-[50vh] md:min-h-[70vh] w-full flex flex-col items-center justify-start overflow-x-hidden">
+    <div className="relative w-full  flex flex-col items-center justify-start pb-20">
       {/* spotlight effects */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <Spotlight
@@ -23,6 +23,8 @@ const Hero = () => {
       {/* grid background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <GridBackgroundDemo />
+        {/* The fade-out mask */}
+        <div className="absolute inset-0 bg-black-100 mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
       {/* venom image */}
